@@ -105,10 +105,17 @@ def save_toJson(extracted_data):
         json.dump(extracted_data, jsonOutput, indent= 4, ensure_ascii= False)
 
 
+def rawdata(extracted_data):
+    filepath = f"./data/raw/raw_{date.today()}.json"
+
+    with open(filepath, "w") as rawjson:
+        json.dump(extracted_data, rawjson)
+
 
 if __name__ == "__main__":
     playlistid = get_Playlistid()
     videoIDs = get_videoId(playlistid)
     video_data = extract_video_data(videoIDs)
-    save_toJson(video_data)
+    # save_toJson(video_data)
+    rawdata(video_data)
 
